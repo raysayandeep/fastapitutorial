@@ -8,8 +8,8 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 
-from models import Users
-from database import SessionLocal
+from ..models import Users
+from ..database import SessionLocal
 
 router = APIRouter(
     prefix='/auth',
