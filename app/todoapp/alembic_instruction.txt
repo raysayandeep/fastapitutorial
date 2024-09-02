@@ -1,0 +1,24 @@
+command: alembic init alembic
+change alembic.ini file
+    sqlalchemy.url = set the database url
+change alembic folder
+    change env.py
+        import models
+        target_metadata = models.Base.metadata
+command: alembic revision -m "custom message of what is changing"
+change alembic/revsions folder
+    change newly created version######.py file
+    example:
+    def upgrade() -> None:
+    op.add_column('tablename', sa.Column('new_colume_name', sa.String(), nullable=True))
+
+
+    def downgrade() -> None:
+    op.drop_column('tablename', 'new_colume_name')
+
+command: alembic upgrade <version_number>
+#also add changes in models
+or
+command: alembic downgrade <version_number>
+            or  for undo last upgrade
+         alembic downgrade -1  
